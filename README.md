@@ -99,3 +99,31 @@ Node.js + Express Backend
   │
   ▼
 MongoDB Atlas
+
+## Blood Donation Flow
+
+
+
+User F
+   │
+   ▼
+Create Blood Request
+   │
+   ▼
+Compatible Request
+   │
+   ▼
+User G
+   │
+   ▼
+Respond / Donate
+   │
+   ▼
+User F Receives Donor Response
+   │
+   ├── Accept
+   │     │
+   │     ▼
+   │   Donor Eligibility
+   │
+   └── Reject
