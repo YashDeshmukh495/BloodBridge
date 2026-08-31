@@ -22,7 +22,7 @@ function MyDonorResponses() {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/blood-requests/my-responses",
+        "https://bloodbridge-938f.onrender.com/api/blood-requests/my-responses",
         {
           method: "GET",
           headers: {

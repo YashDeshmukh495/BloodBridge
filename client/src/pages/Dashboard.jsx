@@ -48,7 +48,7 @@ function Dashboard() {
   const fetchBloodRequests = async (token) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/blood-requests",
+        "https://bloodbridge-938f.onrender.com/api/blood-requests",
         {
           method: "GET",
           headers: {
@@ -84,7 +84,7 @@ function Dashboard() {
   const fetchUserProfile = async (token) => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/profile",
+        "https://bloodbridge-938f.onrender.com/api/auth/profile",
         {
           method: "GET",
           headers: {
@@ -120,7 +120,7 @@ function Dashboard() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/availability",
+        "https://bloodbridge-938f.onrender.com/api/auth/availability",
         {
           method: "PUT",
           headers: {

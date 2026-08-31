@@ -22,7 +22,7 @@ function MyRequests() {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/blood-requests",
+        "https://bloodbridge-938f.onrender.com/api/blood-requests",
         {
           method: "GET",
           headers: {
@@ -87,7 +87,7 @@ function MyRequests() {
         localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/api/blood-requests/${requestId}`,
+        `https://bloodbridge-938f.onrender.com/api/blood-requests/${requestId}`,
         {
           method: "DELETE",
           headers: {

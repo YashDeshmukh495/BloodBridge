@@ -287,7 +287,7 @@ function Register() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/register",
+        "https://bloodbridge-938f.onrender.com/api/auth/register",
         {
           method: "POST",
 

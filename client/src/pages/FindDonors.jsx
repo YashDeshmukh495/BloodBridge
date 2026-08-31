@@ -59,7 +59,7 @@ function FindDonors() {
       if (cityFilter) params.append("city", cityFilter);
 
       const response = await fetch(
-        `http://localhost:5000/api/auth/donors?${params.toString()}`,
+        `https://bloodbridge-938f.onrender.com/api/auth/donors?${params.toString()}`,
         {
           method: "GET",
           headers: {

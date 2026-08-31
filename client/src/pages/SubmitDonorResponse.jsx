@@ -32,7 +32,7 @@ function SubmitDonorResponse() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/blood-requests/${id}/respond`,
+        `https://bloodbridge-938f.onrender.com/api/blood-requests/${id}/respond`,
         {
           method: "POST",
           headers: {

@@ -23,7 +23,7 @@ function DonorResponses() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/blood-requests/${requestId}/responses`,
+        `https://bloodbridge-938f.onrender.com/api/blood-requests/${requestId}/responses`,
         {
           method: "GET",
           headers: {
@@ -74,7 +74,7 @@ function DonorResponses() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/blood-requests/response/${responseId}/${action}`,
+        `https://bloodbridge-938f.onrender.com/api/blood-requests/response/${responseId}/${action}`,
         {
           method: "PUT",
           headers: {
@@ -139,7 +139,7 @@ function DonorResponses() {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/blood-requests/response/${responseId}/complete`,
+        `https://bloodbridge-938f.onrender.com/api/blood-requests/response/${responseId}/complete`,
         {
           method: "PUT",
           headers: {

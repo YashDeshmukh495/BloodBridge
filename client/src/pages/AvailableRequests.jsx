@@ -22,7 +22,7 @@ function AvailableRequests() {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/blood-requests",
+        "https://bloodbridge-938f.onrender.com/api/blood-requests",
         {
           method: "GET",
           headers: {
