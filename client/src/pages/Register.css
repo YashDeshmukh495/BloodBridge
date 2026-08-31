@@ -1,0 +1,516 @@
+/* ================= REGISTER PAGE ================= */
+
+.register-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+
+  background: #fff5f5;
+
+  box-sizing: border-box;
+}
+
+
+/* ================= CARD ================= */
+
+.register-card {
+  width: 100%;
+  max-width: 480px;
+
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 18px;
+
+  border: 1px solid #f1d5d5;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* ================= HEADER ================= */
+
+.register-header {
+  text-align: center;
+
+  margin-bottom: 25px;
+}
+
+
+/* ================= LOGO ================= */
+
+.register-logo {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 8px;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  color: #e31b23;
+
+  cursor: pointer;
+}
+
+.register-logo span {
+  color: #e31b23;
+}
+
+
+/* ================= HEADER TEXT ================= */
+
+.register-header p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 15px;
+}
+
+
+/* ================= CONTENT ================= */
+
+.register-content h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 30px;
+
+  color: #222;
+}
+
+.register-subtitle {
+  text-align: center;
+
+  color: #777;
+
+  margin-top: 8px;
+
+  margin-bottom: 30px;
+
+  font-size: 15px;
+}
+
+
+/* ================= FORM ================= */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* ================= INPUTS ================= */
+
+.form-group input,
+.form-group select {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  background: white;
+
+  transition: 0.2s ease;
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #e31b23;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(227, 27, 35, 0.08);
+}
+
+
+/* ================= PASSWORD ================= */
+
+.password-wrapper {
+  position: relative;
+
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 50px;
+}
+
+
+.eye-button {
+  position: absolute;
+
+  right: 10px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  padding: 5px;
+}
+
+
+/* ================= CAPTCHA ================= */
+
+.captcha-section {
+  margin-top: 8px;
+
+  margin-bottom: 20px;
+}
+
+
+.captcha-title {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* ================= CAPTCHA ROW ================= */
+
+.captcha-container {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+
+/* ================= CAPTCHA CODE ================= */
+
+.captcha-code {
+  flex: 1;
+
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d7d7d7;
+
+  border-radius: 9px;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #f7f7f7,
+      #f7f7f7 5px,
+      #eeeeee 5px,
+      #eeeeee 10px
+    );
+
+  color: #333;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  font-style: italic;
+
+  letter-spacing: 7px;
+
+  text-decoration: line-through;
+
+  user-select: none;
+}
+
+
+/* ================= CAPTCHA REFRESH ================= */
+
+.captcha-refresh {
+  width: 50px;
+
+  height: 50px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  background: white;
+
+  color: #333;
+
+  font-size: 23px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.captcha-refresh:hover {
+  background: #fff5f5;
+
+  border-color: #e31b23;
+
+  color: #e31b23;
+}
+
+
+/* ================= CAPTCHA INPUT ================= */
+
+.captcha-input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 14px;
+
+  margin-top: 10px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  background: white;
+
+  transition: 0.2s ease;
+}
+
+
+.captcha-input:focus {
+  border-color: #e31b23;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(227, 27, 35, 0.08);
+}
+
+
+/* ================= CREATE ACCOUNT BUTTON ================= */
+
+.create-account-button {
+  width: 100%;
+
+  padding: 14px;
+
+  margin-top: 8px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #e31b23;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.create-account-button:hover {
+  background: #c9151c;
+
+  transform: translateY(-1px);
+}
+
+
+.create-account-button:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* ================= SUCCESS ================= */
+
+.success-message {
+  text-align: center;
+
+  color: #16803c;
+
+  margin-bottom: 15px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* ================= ERROR ================= */
+
+.error-message {
+  text-align: center;
+
+  color: #d71920;
+
+  margin-bottom: 15px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* ================= LOGIN ================= */
+
+.login-text {
+  text-align: center;
+
+  margin-top: 25px;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+.login-text button {
+  border: none;
+
+  background: none;
+
+  color: #e31b23;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  margin-left: 5px;
+
+  font-size: 14px;
+}
+
+
+.login-text button:hover {
+  text-decoration: underline;
+}
+
+
+/* ================= BACK HOME ================= */
+
+.back-home {
+  display: block;
+
+  margin: 20px auto 0;
+
+  border: none;
+
+  background: none;
+
+  color: #777;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+
+.back-home:hover {
+  color: #e31b23;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .register-page {
+    padding: 20px 14px;
+
+    align-items: flex-start;
+  }
+
+
+  .register-card {
+    margin-top: 20px;
+
+    padding: 28px 22px;
+
+    border-radius: 14px;
+  }
+
+
+  .register-content h1 {
+    font-size: 25px;
+  }
+
+
+  .register-logo {
+    font-size: 23px;
+  }
+
+
+  .captcha-code {
+    font-size: 19px;
+
+    letter-spacing: 5px;
+  }
+
+
+  .captcha-refresh {
+    width: 46px;
+
+    height: 46px;
+  }
+
+}

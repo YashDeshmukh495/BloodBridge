@@ -1,0 +1,78 @@
+# Implementation Plan - Phase 2 Improvements
+
+This plan details the implementation of four core improvements: mobile number validation, blood units validation, persistent user statistics, and functional donor availability matching.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - Statistics increment is securely tied to the existing successful `completeBloodDonation` endpoint to ensure they cannot be double-counted.
+> - The database changes are backward-compatible and handle legacy users by defaulting missing values to `0` or `false`.
+
+## Proposed Changes
+
+### Backend Components
+
+---
+
+#### [MODIFY] [User.js](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/server/models/User.js)
+- Add new fields:
+  - `donationsCount: { type: Number, default: 0 }`
+  - `bloodReceivedCount: { type: Number, default: 0 }`
+- Ensure `availableToDonate: { type: Boolean, default: false }` is properly declared.
+
+#### [MODIFY] [authController.js](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/server/controllers/authController.js)
+- Update responses for `registerUser`, `loginUser`, and `updateLocation` to serialize the new stats: `donationsCount`, `bloodReceivedCount`.
+- Update `getUserProfile` (GET `/profile`) to:
+  - Retrieve the user profile from the database.
+  - Dynamically query `BloodRequest.countDocuments({ requestedBy: userId })` to get the count of requests created by this user.
+  - Add `requestsCreatedCount` to the user profile response object.
+
+#### [MODIFY] [bloodRequestController.js](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/server/controllers/bloodRequestController.js)
+- In `createBloodRequest`:
+  - Validate `contactNumber` matches `/^\d{10}$/` (exactly 10 digits, no characters). Return `400` status on failure.
+  - Validate `unitsRequired` is an integer between 1 and 6. Return `400` status on failure.
+- In `getBloodRequests`:
+  - Enforce donor visibility: if the current user has `availableToDonate !== true`, return an empty list `[]` for `availableRequests`.
+
+#### [MODIFY] [donorResponseController.js](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/server/controllers/donorResponseController.js)
+- In `submitDonorResponse`:
+  - Verify `donor.availableToDonate === true`. If false, return a `400` error: `"You must be available to donate to respond to requests"`.
+- In `completeBloodDonation` (the final step in the donation workflow):
+  - After validating the donation completion to prevent double-counting, increment `donationsCount` for the donor (`response.donor`) and increment `bloodReceivedCount` for the request owner (`bloodRequest.requestedBy`).
+
+---
+
+### Frontend Components
+
+---
+
+#### [MODIFY] [Profile.jsx](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/client/src/pages/Profile.jsx)
+- Fetch the user's latest profile and statistics dynamically on load from the `/api/auth/profile` endpoint.
+- Render the statistics in the "My Activity" section:
+  - Blood Donations card: display `user.donationsCount || 0`.
+  - Requests Created card: display `user.requestsCreatedCount || 0`.
+  - People Helped card: display `user.donationsCount || 0`.
+- Add a new visual section "Blood Donation Activity" rendering:
+  - Blood Donated: `{user.donationsCount || 0}`
+  - Blood Received: `{user.bloodReceivedCount || 0}`
+
+#### [MODIFY] [CreateBloodRequest.jsx](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/client/src/pages/CreateBloodRequest.jsx)
+- Restrict contact number input: allow only digits and limit to 10 digits max.
+- Restrict units required input: allow only positive integers. Set HTML `min="1"`, `max="6"`, `step="1"`.
+- Validate contact number (exactly 10 digits) and units required (integer between 1 and 6) on submit before making the API request.
+
+#### [MODIFY] [Register.jsx](file:///c:/Users/croma/OneDrive/Desktop/BloodBridge/client/src/pages/Register.jsx)
+- Restrict mobile number input to digits only and limit to 10 digits max.
+- Validate mobile number (exactly 10 digits) on submit.
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- Run `node test_flow.js` to verify registration, login, availability toggle, request creation, response, acceptance, eligibility, and stats increments on successful completions.
+
+### Manual Verification
+- Log in and verify profile statistics update correctly.
+- Test frontend input constraints for contact numbers and units.
+- Verify navbar sticky behavior and toggle persistence on refresh.
